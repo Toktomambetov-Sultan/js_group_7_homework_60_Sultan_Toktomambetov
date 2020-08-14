@@ -3,16 +3,19 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
-	padding: 10px 0;
+	padding: 10px 0 0;
+	height: 100vh;
 }
 .MessagesBlock {
 	background-color: rgb(206, 206, 206);
 	padding: 5px 5px;
 	margin: 0;
 	border: 1px solid rgb(112, 112, 112);
-	width: 500px;
-	max-width: 500px;
+	width: 50%;
+
+	height: 100%;
 	list-style: none;
+	overflow-y: scroll;
 }
 .Message {
 	margin: 0 0 10px 0;
@@ -21,14 +24,24 @@
 	padding: 10px 5px 10px 10px;
 	border: 1px solid rgb(112, 112, 112);
 	border-radius: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-end;
 }
 .Message__autor {
 	margin: 0;
 	padding: 0;
 	color: rgb(255, 0, 0);
-	font-size: 20px;
+	font-size: 24px;
 	font-family: "Roboto", sans-serif;
 	font-weight: 500;
+	line-height: 1.1;
+}
+.Message__datetime {
+	font-size: 15px;
+	color: #1900ff94;
+	margin: 0 5px 0 0;
 }
 .Message__value {
 	font-size: 18px;
@@ -36,13 +49,13 @@
 	padding: 10px 0 0;
 	font-family: "Roboto", sans-serif;
 	font-weight: 300;
+	width: 100%;
 }
 .Form {
 	background-color: #cecece;
 	padding: 5px 5px 10px;
 	border: 1px solid rgb(112, 112, 112);
-	max-width: 400px;
-	width: 400px;
+	width: 50%;
 	text-align: center;
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
@@ -75,4 +88,13 @@
 	padding: 5px 25px;
 	border-radius: 20px;
 	font-size: 20px;
+	outline: none;
+}
+.Form__submit-btn:hover {
+	border: 1px solid #000;
+}
+.Form__submit-btn:active {
+	color: rgb(82, 82, 82);
+	background-color: #fff;
+	border: 1px solid rgb(82, 82, 82);
 }
