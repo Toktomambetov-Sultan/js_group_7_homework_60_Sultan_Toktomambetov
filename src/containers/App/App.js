@@ -2,7 +2,9 @@ import React, { useRef } from "react";
 import "./App.css";
 import { useEffect } from "react";
 import { useState } from "react";
-import moment from "moment";
+
+import Form from "../../components/Form/Form";
+import MessageItem from "../../components/MessageItem/MessageItem";
 const url = "http://146.185.154.90:8000/messages";
 function App() {
 	const [massages, setMassages] = useState([]);
@@ -33,7 +35,7 @@ function App() {
 		setIntervalId(
 			setInterval(() => {
 				initMassages(lastDate.current);
-			}, 1500)
+			}, 2000)
 		);
 	}, []);
 	const sendMessage = (event) => {
@@ -52,7 +54,7 @@ function App() {
 		setIntervalId(
 			setInterval(() => {
 				initMassages(date);
-			}, 1500)
+			}, 2000)
 		);
 	};
 	return (
@@ -60,45 +62,16 @@ function App() {
 			<div className="App">
 				<ul className="MessagesBlock">
 					{massages.map((message) => (
-						<li className="Message" key={message._id}>
-							<h5 className="Message__autor">{message.author}</h5>
-							<span className="Message__datetime">
-								{moment(message.datetime).format(
-									"DD MMM HH:mm:ss"
-								)}
-							</span>
-							<p className="Message__value">{message.message}</p>
-						</li>
+						<MessageItem key={message._id} message={message} />
 					))}
 				</ul>
-				<div className="Form">
-					<form onSubmit={sendMessage}>
-						<label className="Form__label">
-							<span className="Form-group__name">Логин:</span>
-							<input
-								className="Form__input"
-								onChange={(event) =>
-									setAuthorName(event.target.value)
-								}
-								value={authorName}
-								type="text"
-							/>
-						</label>
-						<label className="Form__label">
-							<span className="Form-group__name">Сообщение:</span>
-							<textarea
-								className="Form__textarea"
-								onChange={(event) => {
-									setTextOfMessage(event.target.value);
-								}}
-								value={textOfMessage}
-							></textarea>
-						</label>
-						<button className="Form__submit-btn" type="submit">
-							send
-						</button>
-					</form>
-				</div>
+				<Form
+					authorName={authorName}
+					setAuthorName={setAuthorName}
+					textOfMessage={textOfMessage}
+					setTextOfMessage={setTextOfMessage}
+					sendMessage={sendMessage}
+				/>
 			</div>
 		</div>
 	);
